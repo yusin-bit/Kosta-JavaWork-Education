@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- 강사님 실행 코드에서 getBean("service", CustomerService.class)로 조회한다. -->
+    <bean id="service" class="kosta.service.CustomerServiceImpl"/>
+    <bean id="sampleAdvice" class="kosta.advice.SampleAdvice"/>
+    <bean id="arroundAdvice" class="kosta.advice.ArroundAdvice"/>
+
+    <!-- 객체 생성과 AOP 연결을 모두 XML에서 설정한다. -->
+    <aop:config>
+        <aop:pointcut id="customerMethods"
+                     expression="execution(public * kosta.service..*(..))"/>
+
+        <aop:aspect ref="arroundAdvice" order="0">
+            <aop:around method="around" pointcut-ref="customerMethods"/>
+        </aop:aspect>
+
+        <aop:aspect ref="sampleAdvice" order="1">
+            <aop:before method="before" pointcut-ref="customerMethods"/>
+            <aop:after-returning method="afterReturning" pointcut-ref="customerMethods"
+                                 returning="returnObjc" arg-names="joinPoint,returnObjc"/>
+            <aop:after-throwing method="afterThrowing" pointcut-ref="customerMethods"
+                                throwing="e" arg-names="e"/>
+            <aop:after method="afterFinally" pointcut-ref="customerMethods"/>
+        </aop:aspect>
+    </aop:config>
+</beans>

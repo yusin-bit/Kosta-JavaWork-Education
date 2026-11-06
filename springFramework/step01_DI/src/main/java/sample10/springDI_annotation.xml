@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- @Component, @Service, @Repository, @Controller 가 붙은 클래스를 자동으로 Bean 등록 -->
+	<context:component-scan base-package="sample10"/>
+
+	<!-- xml 과 빈 스캐닝 혼용 : 같은 타입(BoardDTO)의 Bean 을 xml 로 하나 더 등록 -->
+	<bean class="sample10.BoardDTO" id="boardDTO2">
+		<constructor-arg index="0" value="2"/>
+		<constructor-arg index="1" value="xml 로 등록한 Bean"/>
+		<constructor-arg index="2" value="생성자로 주입했어요"/>
+	</bean>
+
+</beans>

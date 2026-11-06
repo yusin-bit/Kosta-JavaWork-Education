@@ -3,3 +3,35 @@
 .classpath
 .project
 .settings/
+# Workspace settings and generated output
+.codex/
+.claude/
+.idea/
+.vscode/
+target/
+build/
+out/
+node_modules/
+*.class
+*.log
+*.war
+*.zip
+*.jar
+*.dat
+*.bin
+*.instructor-original
+
+# Local connection and deployment credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+admin-credentials.txt
+aiven.properties
+dbmanager.properties
+dbInfo.properties
+db.properties
+cloud-init.sql

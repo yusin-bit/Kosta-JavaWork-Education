@@ -1,12 +1,12 @@
 package com.ws03.view;
-
 import java.util.List;
 
-import com.exception.BalanceLackException;
-import com.exception.UserAccountNotFoundException;
 import com.ws03.dto.AccountDto;
+import com.ws03.exception.BalanceLackException;
+import com.ws03.exception.UserAccountNotFoundException;
 import com.ws03.service.BankService;
 import com.ws03.service.BankServiceImpl;
+
 
 public class TestView03 {
 	public static void main(String[] args) {
@@ -29,10 +29,11 @@ public class TestView03 {
 		
 		////////WS_ 추가된 문제///////////////////////////////////////
 		try {
-			int withdrawAmount = bankService.withdraw(111, 10, 10);
+			
+			int withdrawAmount = bankService.withdraw(111, 10, 200);
 			System.out.println(withdrawAmount);
 			
-			System.out.println(bankService.getUserAccount(111, 90));
+			System.out.println( bankService.getUserAccount(111, 90) );
 			
 		}catch( BalanceLackException | UserAccountNotFoundException e ) {
 			System.out.println( e.getMessage());

@@ -1,4 +1,4 @@
-package ex0806.enumex.Goods;
+package ex0806.enumex.goods;
 import java.util.Scanner;
 /**
  키보드 입력을 받아 각 기능을 호출해줄 View
@@ -6,16 +6,17 @@ import java.util.Scanner;
 public class MenuView{
 
 	 private Scanner sc = new Scanner(System.in);
-	 private GoodsService service = new GoodsService(); //전역변수 초기화
+	 private GoodsService service ; //null
 
+	 
+	 public MenuView(String [][] data) {
+		 service =  new GoodsService(data); //전역변수 초기화
+	 }
 	 
   /**
     전체 메뉴를 출력하는 메소드 
   */
-   public void printMenu(String [][] data){//메인에서 전달한 2차원배열의 주소값전달
-	//전달 받은 초기치 데이터를 서비스에 전달해서 배열에 저장한다.
-      service.init(data);
-      
+   public void printMenu(){//메인에서 전달한 2차원배열의 주소값전
       
 	  while(true){
          System.out.println("---------------------------------------------------------------------------");
@@ -70,20 +71,21 @@ public class MenuView{
 	   System.out.print("상품설명 > ");
 	   String explain = sc.nextLine();
 
-       Goods goods = new Goods();
-       goods.setCode(code);
-       goods.setName(name);
-       goods.setPrice(price);
-       goods.setExplain(explain);
+       Goods goods = new Goods(code, name, price,explain);
        
-       InsertResult result = service.insert(goods);
-
+       /*InsertResult result = service.insert(goods);
 	   if(result==InsertResult.INSERT_OUTINDEX)
 		  EndView.printMessage("더이상 등록할 수 없습니다.");
+	   
 	   else if(result==InsertResult.INSERT_DUPLICATE)
 		  EndView.printMessage(code+"는 중복이므로 등록할수 없습니다.");
 	   else 
-           EndView.printMessage("상품이 등록되었습니다.");
+           EndView.printMessage("상품이 등록되었습니다.");*/
+       
+       ////////////////////////////////////
+       InsertResult2 result = service.insert2(goods);
+       EndView.printMessage(result.getMessage());
+	   
   }
 
   /**
@@ -118,12 +120,8 @@ public class MenuView{
 	   
 
 	   //위 3개의 정보를 하나의 Goods객체로 만든다.
-	   Goods goods = new Goods();
 	   
-	   goods.setCode(code);
-       goods.setPrice(price);
-       goods.setExplain(explain);
-	   
+	   Goods goods = new Goods(code,price, explain);
 	   boolean re = service.update(goods);
 	   
 	   if(re){

@@ -1,5 +1,4 @@
-package ex0806.enumex.Goods;
-
+package ex0806.enumex.goods;
 /**
   요청 결과를 출력할 view
 */

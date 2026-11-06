@@ -1,4 +1,5 @@
 package ex0731.method;
+
 class Methodinvoke01{
 	//다음과 같이 메소드를 작성하세요.
 	
@@ -7,15 +8,15 @@ class Methodinvoke01{
 	정수 리턴
 	인수로 정수2개 받음
 	인수로 들어온 정수 2개를 곱해서 출력하고 리턴*/
-		int method01(int a, int b) {
-		int c=a*b;
-		System.out.println(c);
-		return c;
-		}
+	public int 	method01(int i, int j) {//5  4 
+		System.out.println("두정수의 곱 = "+ (i*j) );
+		return i*j;
+	}
 	
 }
-
-class Methodinvoke02{
+///////////////////////////////////////////////////////
+ //The public type Methodinvoke02 must be defined in its own file
+ /*public*/ class Methodinvoke02{
 	
 	//method 이름 : method02
 	//어디서나 누구나 접근가능,객체를 생성하지 않고도 접근가능
@@ -23,31 +24,43 @@ class Methodinvoke02{
 	//인수로 정수2개 받음
 	
 	//인수로 들어온 정수 2개를 더해서 출력하고 더한수 리턴
-		static int  method02(int d,int e) {
-			int f=d+e;
-			System.out.print(f);
-			return f;
+	 public static 	int method02(int i, int j) { //5  4
+		 System.out.println("두정수의 합 = "+ (i+j) );
+			return i+j;
+	 }
+}//
+//////////////////////////////////////////////////////////////////
+ public class MethodInvokeExam{
+	 public static void main(String []args){
+			System.out.println("시작....");
 			
-		}
-		
-	
+			Methodinvoke01 m = new Methodinvoke01();
+			int re = m.method01(5, 4);//메소드 호출
+            System.out.println("리턴값 = " + re);
+            
 
-	
+            System.out.println("--static 메소드 호출 ---");
+            re = Methodinvoke02.method02(5, 4);
+            System.out.println("리턴값 = " + re);
+            
+            
+            System.out.println("-----------------");
+            //Methodinvoke02 m2 = new Methodinvoke02();
+            
+            /*
+             * The static method method02(int, int) 
+             * from the type Methodinvoke02 should be accessed in a static way
+             * */
+            //m2.method02(2, 4);
+            
+		}//메인끝
 }
-
-public class MethodInvokeExam{
-	public static void main(String []args){
-		
-		//MethodInvoke01의 method01 호출
-		 Methodinvoke01 m1 = new Methodinvoke01();
-
-	        int re1 = m1.method01(10, 20);
-
-		//MethodInvoke02의 method02 호출
-	        int re2 = Methodinvoke02.method02(10, 20);
-
-		
-
-	}
-}
-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

@@ -1,0 +1,9 @@
+.settings/
+bin/
+.classpath
+.project
+.metadata
+# DB 접속 정보 등 설정 파일은 올리지 않음
+*.properties
+*/*.properties
+node_modules/

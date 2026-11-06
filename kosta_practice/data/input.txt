@@ -1,0 +1,9 @@
+Java is a programming language.
+
+KOSTA 312기 복습용 샘플 텍스트입니다.
+This file is used by the IO problems (P38).
+   
+빈 줄과 공백만 있는 줄도 섞여 있습니다.
+Line number practice: 1 2 3
+
+마지막 줄입니다.

@@ -10,6 +10,19 @@ public class Student {
   private int age;
   private String addr;
   
+  
+  public Student() {}
+  public Student(String name, int age, String addr) {
+	  this(name,addr);
+	  this.age=age;
+	 
+  }
+  
+  public Student(String name, String addr) {
+	  this.name=name;
+	  this.addr=addr;
+  }
+  
   /**
   setXxx()
    : 제한자 - public

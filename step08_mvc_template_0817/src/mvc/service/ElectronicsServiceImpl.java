@@ -27,27 +27,19 @@ public class ElectronicsServiceImpl implements ElectronicsService {
      * 
      */
     private ElectronicsServiceImpl() {
+    	System.out.println("**private constructor init.....");
     	ResourceBundle rb = ResourceBundle.getBundle("InitInfo");//InitInfo.properties
         for(String key : rb.keySet()) {
      	  String value =  rb.getString(key); //100,\uC120\uD48D\uAE30,35000,\uC0BC\uC131 \uC120\uD48D\uAE30
      	   String data[] = value.split(",");
-      	     list.add(new Electronics( Integer.parseInt(data[0]) ,data[1],   
+     	   System.out.println(key +" = " + value);
+     	  
+     	     list.add(new Electronics( Integer.parseInt(data[0]) ,data[1],   
      	    		 Integer.parseInt( data[2]), data[3]) );
      	  
         }
         
-        System.out.println("\n========== 초기 전자제품 목록 ==========");
-        for (int i = 0; i < list.size(); i++) {
-            Electronics electronics = list.get(i);
-            System.out.printf(
-                    "%d. 모델번호: %d | 제품명: %s | 가격: %,d원 | 설명: %s%n",
-                    i + 1,
-                    electronics.getModelNo(),
-                    electronics.getModelName(),
-                    electronics.getModelPrice(),
-                    electronics.getModelDetail());
-        }
-        System.out.println("========================================\n");
+        System.out.println(list);
       
     }
     

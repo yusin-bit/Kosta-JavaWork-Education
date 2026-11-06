@@ -11,8 +11,8 @@ public class StudentTest {
 		
 		
 		System.out.println("***학생 관리 프로그램 시작합니다.******");
-		StudentService service = new StudentService();//StudentService의 전역변수들이 초기화 
-		service.init(data); // 초기치데이터 세팅
+		StudentService service = new StudentService(data);//StudentService의 전역변수들이 초기화 
+		
 		
 		//전체학생정보 출력
 		Student [] stArr = service.selectAll();
@@ -23,11 +23,7 @@ public class StudentTest {
 		
 //		//2) 등록하기
 		System.out.println("--1. 등록하기 -----");
-		Student student = new Student();
-		student.setName("재석");
-		student.setAge(25);
-		student.setAddr("오리역");
-		
+		Student student = new Student("재석", 25, "오리역");
 		
 		int re = service.insert(student);
 		if(re==-1) 
@@ -64,10 +60,7 @@ public class StudentTest {
 		
 		//4) 수정하기 
 		System.out.println("--4. 수정하기 -----");
-		Student st2 =new Student();
-		st2.setName("미미");//조건
-		st2.setAge(30);
-		st2.setAddr("대전");
+		Student st2 = new Student("미미","대전");
 		
 		if( service.update(st2) ) {
 			EndView.printMessage("수정되었습니다.");

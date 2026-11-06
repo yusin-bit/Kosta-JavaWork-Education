@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+<!-- 외부의 properties파일의 위치를 설정하는 클래스 등록 -->
+<!-- <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+ <property name="locations">
+    <array>
+      <value>classpath:db.properties</value>
+      <value>classpath:dbInfo.properties</value>
+    </array>
+ </property>
+</bean> -->
+
+
+<!--  
+  context:xxxx 는 spring Ioc 컨테이너와 관련된 설정을 간소화 해주는 역할을 한다.
+  애플리케이션의 빈들을 자동으로 스캔하고 빈으로 등록하는 작업을 손쉽게 해주는
+   역할
+   
+   * 기호는 ant style적용가능
+ -->
+ <!-- <context:property-placeholder location="classpath:db.properties,dbInfo.properties"/> -->
+<context:property-placeholder location="classpath:*.properties"/>
+
+
+  <bean class="sample04.Student" id="s1">
+   <property name="addr" value="서울"/>
+   <property name="name" value="${driverName}"/>
+   <property name="no" value="1"/>
+   <property name="phone" value="02-333-444"/>
+  </bean>
+  
+  <bean class="sample04.Student" id="st2">
+    <property name="name" value="${name}"/>
+    <property name="addr" value="${addr}"/>
+    <property name="no" value="${no}"/>
+    <property name="phone" value="${phone}"/>
+  </bean>
+
+  <bean class="sample04.StudentDAOImpl" id="studentDao"/>
+
+  <bean class="sample04.StudentServiceImpl" id="service">
+   <property name="studentDAO" ref="studentDao"/>
+  </bean>
+  
+  <bean class="sample04.StudentController" id="controller">
+    <property name="student" ref="st2"/>
+    <property name="studentService" ref="service"/>
+  </bean>
+
+
+</beans>
+
+
+
+
+
+
+
+

@@ -1,5 +1,4 @@
-package ex0806.enumex.Goods;
-
+package ex0806.enumex.goods;
 public class  StartView{
 	public static void main(String[] args) {
        String [][] data = new String [][]{
@@ -13,8 +12,8 @@ public class  StartView{
 
 		System.out.println("***** 프로그램 시작합니다. ********************");
 
-       MenuView mv  = new MenuView();//전역변수 초기화
-	   mv.printMenu(data);
+		MenuView mv = new MenuView(data);//전역변수 초기화
+	    mv.printMenu();
 	   
 	   
 	}

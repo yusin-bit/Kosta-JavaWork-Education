@@ -1,20 +1,19 @@
 package ex0810.abstract_final;
 
-
 //Error 를 수정하고 이유를 주석으로 처리하세요.
 
- class FinalClassExam{
- final int i = -999999; 
+final class FinalClassExam{//상속불가, 생성가능
+	final int i = -999999; //값변경불가
 }
 
 
-abstract class AbstractClassExam{
-    abstract String abstractMethodExam1(int i,String s);    
-     int finalMethodExam(int i, int j){ 
+abstract class AbstractClassExam{//상속가능, 생성불가
+    abstract String abstractMethodExam(int i,String s) ; //body 없다. 재정의를 위해서 만든다.   
+    final int finalMethodExam(int i, int j){ //재정의불가
         return i+j;
     }
 }
-
+////////////////////////////////////////////////////////////////////////////
 
 class Sample01 extends AbstractClassExam{
 	String abstractMethodExam(int i,String s){
@@ -22,27 +21,24 @@ class Sample01 extends AbstractClassExam{
 		return s+i;
 	}
 	
-	int finalMethodExam(int i, int j){ // final 메소드 재정의 불가
+	/*int finalMethodExam(int i, int j){
 		return i*j;
-	}
-
-	@Override
-	String abstractMethodExam1(int i, String s) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	}*/
 	
 }
 
-class Sample02 extends FinalClassExam{  } // final class 상속 불가
+class Sample02 /*extends FinalClassExam*/{
+	
+}
 
 
  
-abstract class Sample03 extends AbstractClassExam{ // abstract메소드가 있을시 그 클래스도 abstract 클래스 
-	 String abstractMethodExam1(int i,String s){  
+abstract class Sample03 extends AbstractClassExam{
+	 String abstractMethodExam(int i,String s){
 		return s+i;
 	 }
-	abstract String abstractMethodExam(int i,String s); // abstract메소드가 있을시 그 클래스도 abstract 클래스 
+	 
+	abstract String abstractMethodExam(String s, int i);    
 
 	void sampleMethod03(){
 		System.out.println("void sampleMethod03() 호출 됨");
@@ -51,11 +47,11 @@ abstract class Sample03 extends AbstractClassExam{ // abstract메소드가 있�
 
 class AbstractFinalClassTest{
     public static void main(String args[]){
-		AbstractClassExam ace = new Sample01(); 
+		AbstractClassExam ace /*= new AbstractClassExam()*/; 
 		FinalClassExam fce = new FinalClassExam();
 		//fce.i=100000;
 		Sample01 s01 = new Sample01();
 		AbstractClassExam aceS01 = new Sample01();
-		aceS01.abstractMethodExam1(700,"_999");
+		aceS01.abstractMethodExam(700,"_999");
 	}
 }

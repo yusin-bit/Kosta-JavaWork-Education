@@ -14,13 +14,12 @@ class ArrayExam{
 		System.out.println(intArr);
 		System.out.println(doubleArr);
 		
-		System.out.println(chArr);
+		System.out.println("dd = "+chArr);
 		
 		System.out.println(booleanArr);
 		System.out.println(strArr);
 		
-
-		System.out.println("##################");
+       System.out.println("##################");
 		
 		/*for(int index=0; index < 5 ; index++){
                System.out.println(intArr[index]);
@@ -30,20 +29,19 @@ class ArrayExam{
 			   System.out.println(strArr[index]);
 			   System.out.println("---------------");
 		}*/
-			
 
 		System.out.println("****intArr 배열 방 ******");
 		System.out.println("intArr = " + intArr);
 		for(int index=0; index< intArr.length  ; index++){
-           System.out.println("intArr["+ index+ "] = " + intArr[index]);
+		   System.out.println("intArr["+ index+ "] = " + intArr[index]);
 		}
-
-
+		
+		
 		System.out.println("\n****doubleArr 배열 방 ******");
 		System.out.println("doubleArr = " + doubleArr);
 		
 		for(int index=0; index< doubleArr.length  ; index++){
-           System.out.println("doubleArr["+ index+ "] = " + doubleArr[index]);
+		   System.out.println("doubleArr["+ index+ "] = " + doubleArr[index]);
 		}
 		
 		
@@ -54,33 +52,27 @@ class ArrayExam{
 		System.out.println( "chArr= "+ chArr); //주소값
 		
 		for(int index=0; index< chArr.length  ; index++){
-           System.out.println("chArr["+ index+ "] = " + chArr[index]);
+		   System.out.println("chArr["+ index+ "] = " + chArr[index]);
 		}
-
+		
 		System.out.println("\n****booleanArr 배열 방 ******");
 		System.out.println("booleanArr = " + booleanArr);
 		for(int index=0; index< booleanArr.length  ; index++){
-           System.out.println("booleanArr["+ index+ "] = " + booleanArr[index]);
+		   System.out.println("booleanArr["+ index+ "] = " + booleanArr[index]);
 		}
-
+		
 		System.out.println("\n****strArr 배열 방 ******");
 		System.out.println("strArr = " + strArr);
 		for(int index=0; index< strArr.length  ; index++){
-           System.out.println("strArr["+ index+ "] = " + strArr[index]);
-		}
+		   System.out.println("strArr["+ index+ "] = " + strArr[index]);
+		}		
       
 	}
 
 	//메소드 : printArrayValue02	
 	//위의 5개의 배열에서 각각 적당한 값으로 data를 할당하세요.
-	public void printArrayValue02(){
-         
-	  //intArr = {1,2,3,4,5};//선언과 동시에 가능함 에러
-		
-	 // int [] intArr = {1,2,3,4,5};
-
-	  //intArr = new int [] {1,2,3,4,5};
-		
+	public void printArrayValue02(){   
+			
 		 for(int i=0; i< this.intArr.length ; i++){ 
 			 
 	            intArr[i] = (i+10); //
@@ -93,9 +85,11 @@ class ArrayExam{
 				
 				strArr[i]= "A"+i;
 		}
+ 
 			 
 		 System.out.println("값 변경 완료하였습니다.");
 	}
+	
 	
 	//메소드 : printArrayValue03	
 	//새롭게 할당된값을 출력하세요

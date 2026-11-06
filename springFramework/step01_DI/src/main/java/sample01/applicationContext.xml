@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+ <!--  객체생성 
+     en = new MessageBeanEnImpl() 동일하다. 
+ -->
+ <bean class="sample01.MessageBeanEnImpl" id="en" />
+ 
+ <!-- scope="prototype" 설정은 객체를  필요로 할때마다 새롭게 생성한다. - 지연초기화 -->
+ <bean class="sample01.MessageBeanKoImpl" id="ko" scope="prototype"/>
+ 
+ <bean class="sample01.MessageBeanKoImpl" id="ko2" />
+
+</beans>
+

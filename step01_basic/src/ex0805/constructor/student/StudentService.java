@@ -14,7 +14,7 @@ public class StudentService {
 	/**
 	 * 초기치데이터 3명 정도 세팅하기 
 	 * */
-	public void init(String [][] data) {		
+	public  StudentService(String [][] data) {		
 		for(int i=0; i< data.length ; i++) {
 			stArr[ count++ ] = this.create( data[i] );
 		}	
@@ -25,11 +25,7 @@ public class StudentService {
 	 *  Student객체를 생성해서 리턴해주는 메소드 작성
 	 * */
 	 private Student create( String [] row ){//{"희정","20","대구"}
-		 Student st = new Student();
-		 
-		 st.setName(row[0]);
-		 st.setAge(Integer.parseInt(row[1]));
-		 st.setAddr(row[2]);
+		 Student st = new Student( row[0] , Integer.parseInt(row[1]) , row[2]);
 		 
 		 return st;
 	 }
@@ -91,7 +87,7 @@ public class StudentService {
 	
 	
 	/**
-	 * 이름에 해당하는 학생의 나이와 주소 변경하기 
+	 * 이름에 해당하는 학생의  주소 변경하기 
 	 *  : 이름에 해당하는 학생이 있는지 찾아서 없으면  false 리턴
 	 *   있으면  setAge() , setAddr() 이용해서 전달된 인수의 값으로 변경하고
 	 *    true리턴
@@ -100,14 +96,13 @@ public class StudentService {
 	 *             true이면 수정성공, false 수정실패
 	 *        
 	 * */
-	 public boolean update(Student student){
+	 public boolean update(Student student){//이름, 주소
 		 
 		 Student searchSt = this.selectByName( student.getName() );
 		 
 		 if(searchSt==null)return false;
 		 
 		 //수정하자
-		 searchSt.setAge( student.getAge() );
 		 searchSt.setAddr( student.getAddr() );
 		 
 		 return true;
